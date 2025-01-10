@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정보</title>
+    <style>
+        /* 기본 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+        }
+
+        /* CCTV 스트림 섹션 */
+        .cctv-list {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
+
+        .cctv-item {
+            flex: 1;
+            max-width: 300px;
+            position: relative;
+        }
+
+        .cctv-item iframe {
+            width: 100%;
+            height: 200px;
+            border: none;
+        }
+
+        .cctv-title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+            background-color: #f1f1f1;
+            text-align: center;
+        }
+
+        /* 그래프를 위한 영역 */
+        .graph-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .graph-container img {
+            width: 100%;
+            max-width: 600px; /* 그래프 크기 제한 */
+            margin-bottom: 20px;
+        }
+
+        /* 작은 화면 대응 */
+        @media (max-width: 768px) {
+            .cctv-list {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .graph-container {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .graph-container img {
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>마포구, 서초구, 서울시 데이터 비교</h1>
+
+    <!-- 마포구 데이터 섹션 -->
+    <h2>마포구 데이터</h2>
+    <h3>CCTV Stream</h3>
+    <div class="cctv-list">
+        <!-- CCTV Item 1 -->
+        <div class="cctv-item">
+            <iframe src="https://www.utic.go.kr/jsp/map/openDataCctvStream.jsp?key=jk0sS1L5VsUFVKEJi0oTlQ2uV6KLIWxI19K2hH10&cctvid=L010248&cctvName=%25EC%259B%2594%25EB%2593%259C%25EC%25BB%25B5%25EC%25A0%2595%25EB%25AC%25B8&kind=Seoul&cctvip=undefined&cctvch=51&id=4&cctvpasswd=undefined&cctvport=undefined"
+                    allowfullscreen></iframe>
+            <div class="cctv-title">월드컵정문</div>
+        </div>
+        <!-- CCTV Item 2 -->
+        <div class="cctv-item">
+            <iframe src="https://www.utic.go.kr/jsp/map/openDataCctvStream.jsp?key=jk0sS1L5VsUFVKEJi0oTlQ2uV6KLIWxI19K2hH10&cctvid=L010183&cctvName=%25EC%258B%25A0%25EC%25B4%258C&kind=Seoul&cctvip=undefined&cctvch=51&id=45&cctvpasswd=undefined&cctvport=undefined"
+                    allowfullscreen></iframe>
+            <div class="cctv-title">신촌</div>
+        </div>
+        <!-- CCTV Item 3 -->
+        <div class="cctv-item">
+            <iframe src="https://www.utic.go.kr/jsp/map/openDataCctvStream.jsp?key=jk0sS1L5VsUFVKEJi0oTlQ2uV6KLIWxI19K2hH10&cctvid=L010327&cctvName=%25ED%2595%25A9%25EC%25A0%2595%25EC%2597%25AD&kind=Seoul&cctvip=undefined&cctvch=51&id=42&cctvpasswd=undefined&cctvport=undefined"
+                    allowfullscreen></iframe>
+            <div class="cctv-title">합정역</div>
+        </div>
+    </div>
+
+    <!-- 마포구 그래프 섹션 -->
+    <div class="graph-container">
+        <div class="graph-item">
+            <h3>인구수 비교</h3>
+            <img src="{{ url_for('static', filename='population_comparison.png') }}" alt="마포구와 서울시 인구수 비교">
+        </div>
+        <div class="graph-item">
+            <h3>주택 분포</h3>
+            <img src="{{ url_for('static', filename='housing_distribution.png') }}" alt="마포구와 서울시 주택 분포">
+        </div>
+        <div class="graph-item">
+            <h3>교통문화지수 비교</h3>
+            <img src="{{ url_for('static', filename='traffic_culture_index.png') }}" alt="마포구와 서울시 교통문화지수 비교">
+        </div>
+    </div>
+
+    <!-- 서초구 데이터 섹션 -->
+    <h2>서초구 데이터</h2>
+    <h3>CCTV Stream</h3>
+    <div class="cctv-list">
+        <!-- CCTV Item 1 -->
+        <div class="cctv-item">
+            <iframe src="https://www.utic.go.kr/jsp/map/openDataCctvStream.jsp?key=jk0sS1L5VsUFVKEJi0oTlQ2uV6KLIWxI19K2hH10&cctvid=L933098&cctvName=%25EC%2584%259C%25EC%259A%25B8%2520%25EC%2584%259C%25EC%25B4%2588%2520%25EC%2584%259C%25EC%25B4%2588%25EB%258C%2580%25EB%25A1%259C&kind=KB&cctvip=9990&cctvch=undefined&id=undefined&cctvpasswd=undefined&cctvport=undefined" allowfullscreen></iframe>
+            <div class="cctv-title">서초대로</div>
+        </div>
+        <!-- CCTV Item 2 -->
+        <div class="cctv-item">
+            <iframe src="https://www.utic.go.kr/jsp/map/openDataCctvStream.jsp?key=jk0sS1L5VsUFVKEJi0oTlQ2uV6KLIWxI19K2hH10&cctvid=L010146&cctvName=%25EC%2584%259C%25EC%25B4%2588%25EC%2597%25AD%25EC%2582%25AC%25EA%25B1%25B0%25EB%25A6%25AC&kind=Seoul&cctvip=undefined&cctvch=51&id=53&cctvpasswd=undefined&cctvport=undefined" allowfullscreen></iframe>
+            <div class="cctv-title">서초역사거리</div>
+        </div>
+        <!-- CCTV Item 3 -->
+        <div class="cctv-item">
+            <iframe src="https://www.utic.go.kr/jsp/map/openDataCctvStream.jsp?key=jk0sS1L5VsUFVKEJi0oTlQ2uV6KLIWxI19K2hH10&cctvid=L010192&cctvName=%25EC%2596%2591%25EC%259E%25AC%25EC%2597%25AD&kind=Seoul&cctvip=undefined&cctvch=52&id=208&cctvpasswd=undefined&cctvport=undefined" allowfullscreen></iframe>
+            <div class="cctv-title">양재역</div>
+        </div>
+    </div>
+
+    <!-- 서초구 그래프 섹션 -->
+    <div class="graph-container">
+        <div class="graph-item">
+            <h3>인구수 비교</h3>
+            <img src="{{ url_for('static', filename='seocho_population_comparison.png') }}" alt="서초구와 서울시 인구수 비교">
+        </div>
+        <div class="graph-item">
+            <h3>주택 분포</h3>
+            <img src="{{ url_for('static', filename='seocho_housing_distribution.png') }}" alt="서초구와 서울시 주택 분포">
+        </div>
+        <div class="graph-item">
+            <h3>교통문화지수 비교</h3>
+            <img src="{{ url_for('static', filename='seocho_traffic_culture_index.png') }}" alt="서초구와 서울시 교통문화지수 비교">
+        </div>
+    </div>
+
+</body>
+</html>
